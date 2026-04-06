@@ -25,7 +25,7 @@ These environment variables are the runtime contract for the `gateway` container
 Notes:
 
 - `cosem.devices` is still configured
-  in [application.yml](/D:/stm/pi/cosem-gateway/gateway/src/main/resources/application.yml). If you want
+  in [gateway/src/main/resources/application.yml](gateway/src/main/resources/application.yml). If you want
   device-to-profile mapping from environment variables, that should be added explicitly as a separate feature.
 - The current Jib image for the gateway uses `eclipse-temurin:25-jre` as the base image.
 
@@ -44,6 +44,16 @@ Build the gateway container image with Jib:
 
 ```bash
 mvn -pl gateway jib:dockerBuild
+```
+
+Run the gateway container with environment variables:
+
+```bash
+docker run -d \
+  --name cosem-gateway \
+  -p 4059:4059 \
+  -e KAFKA_BOOTSTRAP_SERVERS=kafka:9092 \
+  gateway:0.1.0-SNAPSHOT
 ```
 
 ## Run
@@ -97,7 +107,7 @@ Raw incoming DLMS frames are also published without parsing to `cosem.kafka.topi
 
 ## Kafka topics
 
-Configured in [application.yml](/D:/stm/pi/cosem-gateway/gateway/src/main/resources/application.yml) under
+Configured in [gateway/src/main/resources/application.yml](gateway/src/main/resources/application.yml) under
 `cosem.kafka.topics`.
 
 ### `meter.readings`
@@ -105,9 +115,9 @@ Configured in [application.yml](/D:/stm/pi/cosem-gateway/gateway/src/main/resour
 - Purpose: normalized meter readings extracted from DLMS push notifications
 - Kafka key: `device_id`
 - Payload
-  model: [MeterMessage.java](/D:/stm/pi/cosem-gateway/gateway/src/main/java/io/cosemgateway/model/MeterMessage.java)
+  model: [gateway/src/main/java/io/cosemgateway/model/MeterMessage.java](gateway/src/main/java/io/cosemgateway/model/MeterMessage.java)
 - Reading value
-  model: [MeterReading.java](/D:/stm/pi/cosem-gateway/gateway/src/main/java/io/cosemgateway/model/MeterReading.java)
+  model: [gateway/src/main/java/io/cosemgateway/model/MeterReading.java](gateway/src/main/java/io/cosemgateway/model/MeterReading.java)
 
 Example payload shape:
 
@@ -138,9 +148,9 @@ Example payload shape:
 - Purpose: normalized alarm and event-like values routed from the same incoming push
 - Kafka key: `device_id`
 - Payload
-  model: [MeterMessage.java](/D:/stm/pi/cosem-gateway/gateway/src/main/java/io/cosemgateway/model/MeterMessage.java)
+  model: [gateway/src/main/java/io/cosemgateway/model/MeterMessage.java](gateway/src/main/java/io/cosemgateway/model/MeterMessage.java)
 - Fields are selected by `topic: meter.alarms` inside the device profile YAML, for
-  example [saiman_dala_3ph.yml](/D:/stm/pi/cosem-gateway/gateway/src/main/resources/device-profiles/saiman_dala_3ph.yml)
+  example [gateway/src/main/resources/device-profiles/saiman_dala_3ph.yml](gateway/src/main/resources/device-profiles/saiman_dala_3ph.yml)
 
 Example payload shape:
 
@@ -163,7 +173,7 @@ Example payload shape:
 
 - Purpose: reserved topic for event payloads
 - Kafka key: `device_id`
-- Current state: configured in [application.yml](/D:/stm/pi/cosem-gateway/gateway/src/main/resources/application.yml),
+- Current state: configured in [gateway/src/main/resources/application.yml](gateway/src/main/resources/application.yml),
   but not actively populated by the current pipeline
 
 ### `meter.raw`
@@ -171,7 +181,7 @@ Example payload shape:
 - Purpose: raw incoming TCP frames from devices, published before decode
 - Kafka key: current remote address string
 - Payload
-  model: [RawFrameMessage.java](/D:/stm/pi/cosem-gateway/gateway/src/main/java/io/cosemgateway/model/RawFrameMessage.java)
+  model: [gateway/src/main/java/io/cosemgateway/model/RawFrameMessage.java](gateway/src/main/java/io/cosemgateway/model/RawFrameMessage.java)
 
 Example payload shape:
 
