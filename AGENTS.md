@@ -32,6 +32,7 @@
 
 - Gateway runtime settings live in `gateway/src/main/resources/application.yml`.
 - Kafka topic names are configured under `cosem.kafka.topics`.
+- Raw TCP frames are published to `cosem.kafka.topics.raw` before decode.
 - Device-to-profile mapping is configured under `cosem.devices`.
 - Device profile YAML files are expected under `gateway/src/main/resources/device-profiles/`.
 

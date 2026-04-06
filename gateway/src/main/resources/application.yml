@@ -18,6 +18,7 @@ cosem:
       readings: ${COSEM_KAFKA_TOPIC_READINGS:meter.readings}
       events: ${COSEM_KAFKA_TOPIC_EVENTS:meter.events}
       alarms: ${COSEM_KAFKA_TOPIC_ALARMS:meter.alarms}
+      raw: ${COSEM_KAFKA_TOPIC_RAW:meter.raw}
 
   tcp:
     port: ${DLMS_TCP_PORT:4059}

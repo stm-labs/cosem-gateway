@@ -34,6 +34,7 @@
 
     <properties>
         <java.version>25</java.version>
+        <jib.version>3.4.6</jib.version>
         <lombok.version>1.18.44</lombok.version>
         <gurux.dlms.version>4.0.90</gurux.dlms.version>
         <snakeyaml.version>2.6</snakeyaml.version>

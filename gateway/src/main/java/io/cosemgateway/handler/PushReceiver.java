@@ -14,12 +14,14 @@ import io.cosemgateway.model.DeviceProfile;
 import io.cosemgateway.model.DeviceRegistry;
 import io.cosemgateway.model.MeterMessage;
 import io.cosemgateway.model.ObisMapper;
+import io.cosemgateway.model.RawFrameMessage;
 import io.cosemgateway.output.KafkaPublisher;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.time.Instant;
+import java.util.Base64;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -37,6 +39,7 @@ public class PushReceiver {
     private final KafkaPublisher publisher;
 
     public void onFrame(byte[] frame, String remoteAddr) {
+        publishRawFrame(frame, remoteAddr);
         try {
             DecodedPush decoded = codec.decode(frame);
             String systemTitle = decoded.systemTitle();
@@ -92,6 +95,17 @@ public class PushReceiver {
         }
     }
 
+    private void publishRawFrame(byte[] frame, String remoteAddr) {
+        RawFrameMessage raw = new RawFrameMessage();
+        raw.setDevice_id(remoteAddr);
+        raw.setRemote_addr(remoteAddr);
+        raw.setTimestamp(Instant.now());
+        raw.setFrame_length(frame.length);
+        raw.setPayload_hex(toHex(frame));
+        raw.setPayload_base64(Base64.getEncoder().encodeToString(frame));
+        publisher.publishRaw(remoteAddr, raw);
+    }
+
     private static String resolveDeviceId(String fallbackDeviceId, Map<String, Object> allReadings) {
         if (!fallbackDeviceId.startsWith("unknown-")) {
             return fallbackDeviceId;
@@ -101,5 +115,14 @@ public class PushReceiver {
             return reading.getStringValue();
         }
         return fallbackDeviceId;
+    }
+
+    private static String toHex(byte[] data) {
+        StringBuilder sb = new StringBuilder(data.length * 2);
+        for (byte b : data) {
+            sb.append(Character.forDigit((b >> 4) & 0xF, 16));
+            sb.append(Character.forDigit(b & 0xF, 16));
+        }
+        return sb.toString();
     }
 }
