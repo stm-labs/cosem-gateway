@@ -1,0 +1,894 @@
+id: saiman_dala_3ph
+manufacturer: SAIMAN
+model: DALA 3ph
+objects:
+  # Supported subset from the provided OBIS table.
+  # The current gateway mapper handles Data, Register, ExtendedRegister,
+  # DemandRegister and DisconnectControl objects.
+
+  - obis: "0.0.1.0.0.255"
+    class_id: 8
+    attribute: 2
+    field: meter_clock
+    topic: meter.readings
+    push: true
+    description: Meter clock datetime
+  - obis: "0.0.42.0.0.255"
+    class_id: 1
+    field: cosem_logical_device_name
+    topic: meter.readings
+    description: COSEM logical device name
+  - obis: "0.0.96.1.0.255"
+    class_id: 1
+    field: device_serial_number
+    topic: meter.readings
+    push: true
+    description: Device serial number
+  - obis: "0.129.96.12.6.255"
+    class_id: 1
+    field: g3_signal_strength
+    topic: meter.readings
+    description: G3 signal strength
+  - obis: "0.129.96.12.7.255"
+    class_id: 1
+    field: rf_signal_strength
+    topic: meter.readings
+    description: RF signal strength
+  - obis: "0.0.96.12.5.255"
+    class_id: 1
+    field: gprs_signal_strength
+    topic: meter.readings
+    description: GPRS signal strength
+  - obis: "0.0.96.1.152.255"
+    class_id: 1
+    field: imei_number
+    topic: meter.readings
+    description: IMEI number
+  - obis: "0.0.0.2.1.255"
+    class_id: 1
+    field: meter_fw_version
+    topic: meter.readings
+    description: Meter firmware version
+  - obis: "0.0.96.1.138.255"
+    class_id: 1
+    field: module_fw_version
+    topic: meter.readings
+    description: Module firmware version
+  - obis: "0.128.1.6.1.255"
+    class_id: 1
+    field: module_fw_crc
+    topic: meter.readings
+    description: Module firmware CRC
+  - obis: "0.1.97.98.15.255"
+    class_id: 1
+    field: current_alarm
+    topic: meter.alarms
+    description: Current alarm bitmask
+  - obis: "0.1.97.98.16.255"
+    class_id: 1
+    field: current_led_alarm
+    topic: meter.alarms
+    description: Current LED alarm bitmask
+  - obis: "1.0.0.4.2.255"
+    class_id: 1
+    field: ct_transformer_numerator
+    topic: meter.readings
+    description: CT transformer numerator
+  - obis: "1.0.0.4.5.255"
+    class_id: 1
+    field: ct_transformer_denominator
+    topic: meter.readings
+    description: CT transformer denominator
+  - obis: "1.0.0.4.3.255"
+    class_id: 1
+    field: vt_transformer_numerator
+    topic: meter.readings
+    description: VT transformer numerator
+  - obis: "1.0.0.4.6.255"
+    class_id: 1
+    field: vt_transformer_denominator
+    topic: meter.readings
+    description: VT transformer denominator
+  - obis: "0.1.94.86.53.255"
+    class_id: 1
+    field: relay_action_count
+    topic: meter.readings
+    description: Number of relay actions
+  - obis: "1.0.32.32.0.255"
+    class_id: 1
+    field: l1_sag_count
+    topic: meter.alarms
+    description: Number of L1 sag events
+  - obis: "1.0.52.32.0.255"
+    class_id: 1
+    field: l2_sag_count
+    topic: meter.alarms
+    description: Number of L2 sag events
+  - obis: "1.0.72.32.0.255"
+    class_id: 1
+    field: l3_sag_count
+    topic: meter.alarms
+    description: Number of L3 sag events
+  - obis: "1.0.32.35.0.255"
+    class_id: 1
+    field: last_l1_sag_datetime
+    topic: meter.alarms
+    description: Datetime of last L1 sag
+  - obis: "1.0.52.35.0.255"
+    class_id: 1
+    field: last_l2_sag_datetime
+    topic: meter.alarms
+    description: Datetime of last L2 sag
+  - obis: "1.0.72.35.0.255"
+    class_id: 1
+    field: last_l3_sag_datetime
+    topic: meter.alarms
+    description: Datetime of last L3 sag
+  - obis: "1.0.32.36.0.255"
+    class_id: 1
+    field: l1_swell_count
+    topic: meter.alarms
+    description: Number of L1 swell events
+  - obis: "1.0.52.36.0.255"
+    class_id: 1
+    field: l2_swell_count
+    topic: meter.alarms
+    description: Number of L2 swell events
+  - obis: "1.0.72.36.0.255"
+    class_id: 1
+    field: l3_swell_count
+    topic: meter.alarms
+    description: Number of L3 swell events
+  - obis: "1.0.32.39.0.255"
+    class_id: 1
+    field: last_l1_swell_datetime
+    topic: meter.alarms
+    description: Datetime of last L1 swell
+  - obis: "1.0.52.39.0.255"
+    class_id: 1
+    field: last_l2_swell_datetime
+    topic: meter.alarms
+    description: Datetime of last L2 swell
+  - obis: "1.0.72.39.0.255"
+    class_id: 1
+    field: last_l3_swell_datetime
+    topic: meter.alarms
+    description: Datetime of last L3 swell
+  - obis: "0.129.25.0.128.255"
+    class_id: 1
+    field: gprs_module_period
+    topic: meter.readings
+    description: GPRS module period
+  - obis: "0.0.96.20.0.255"
+    class_id: 1
+    field: meter_cover_open_count
+    topic: meter.alarms
+    description: Number of open meter cover events
+  - obis: "0.0.96.20.5.255"
+    class_id: 1
+    field: terminal_cover_open_count
+    topic: meter.alarms
+    description: Number of open terminal cover events
+  - obis: "0.0.96.20.15.255"
+    class_id: 1
+    field: magnetic_event_count
+    topic: meter.alarms
+    description: Number of magnetic events
+
+  - obis: "1.0.1.8.0.255"
+    class_id: 3
+    field: active_energy_plus_total
+    unit: Wh
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: Active energy (+A) total
+  - obis: "1.0.1.8.1.255"
+    class_id: 3
+    field: active_energy_plus_t1
+    unit: Wh
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: Active energy (+A) T1
+  - obis: "1.0.1.8.2.255"
+    class_id: 3
+    field: active_energy_plus_t2
+    unit: Wh
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: Active energy (+A) T2
+  - obis: "1.0.1.8.3.255"
+    class_id: 3
+    field: active_energy_plus_t3
+    unit: Wh
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: Active energy (+A) T3
+  - obis: "1.0.1.8.4.255"
+    class_id: 3
+    field: active_energy_plus_t4
+    unit: Wh
+    scaler: 0
+    topic: meter.readings
+    description: Active energy (+A) T4
+
+  - obis: "1.0.2.8.0.255"
+    class_id: 3
+    field: active_energy_minus_total
+    unit: Wh
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: Active energy (-A) total
+  - obis: "1.0.2.8.1.255"
+    class_id: 3
+    field: active_energy_minus_t1
+    unit: Wh
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: Active energy (-A) T1
+  - obis: "1.0.2.8.2.255"
+    class_id: 3
+    field: active_energy_minus_t2
+    unit: Wh
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: Active energy (-A) T2
+  - obis: "1.0.2.8.3.255"
+    class_id: 3
+    field: active_energy_minus_t3
+    unit: Wh
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: Active energy (-A) T3
+  - obis: "1.0.2.8.4.255"
+    class_id: 3
+    field: active_energy_minus_t4
+    unit: Wh
+    scaler: 0
+    topic: meter.readings
+    description: Active energy (-A) T4
+
+  - obis: "1.0.3.8.0.255"
+    class_id: 3
+    field: reactive_energy_plus_total
+    unit: varh
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: Reactive energy (+R) total
+  - obis: "1.0.3.8.1.255"
+    class_id: 3
+    field: reactive_energy_plus_t1
+    unit: varh
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: Reactive energy (+R) T1
+  - obis: "1.0.3.8.2.255"
+    class_id: 3
+    field: reactive_energy_plus_t2
+    unit: varh
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: Reactive energy (+R) T2
+  - obis: "1.0.3.8.3.255"
+    class_id: 3
+    field: reactive_energy_plus_t3
+    unit: varh
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: Reactive energy (+R) T3
+  - obis: "1.0.4.8.0.255"
+    class_id: 3
+    field: reactive_energy_minus_total
+    unit: varh
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: Reactive energy (-R) total
+  - obis: "1.0.4.8.1.255"
+    class_id: 3
+    field: reactive_energy_minus_t1
+    unit: varh
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: Reactive energy (-R) T1
+  - obis: "1.0.4.8.2.255"
+    class_id: 3
+    field: reactive_energy_minus_t2
+    unit: varh
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: Reactive energy (-R) T2
+  - obis: "1.0.4.8.3.255"
+    class_id: 3
+    field: reactive_energy_minus_t3
+    unit: varh
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: Reactive energy (-R) T3
+  - obis: "1.0.5.8.0.255"
+    class_id: 3
+    field: reactive_energy_q1_total
+    unit: varh
+    scaler: 0
+    topic: meter.readings
+    description: Reactive energy QI total
+  - obis: "1.0.6.8.0.255"
+    class_id: 3
+    field: reactive_energy_q2_total
+    unit: varh
+    scaler: 0
+    topic: meter.readings
+    description: Reactive energy QII total
+  - obis: "1.0.7.8.0.255"
+    class_id: 3
+    field: reactive_energy_q3_total
+    unit: varh
+    scaler: 0
+    topic: meter.readings
+    description: Reactive energy QIII total
+  - obis: "1.0.8.8.0.255"
+    class_id: 3
+    field: reactive_energy_q4_total
+    unit: varh
+    scaler: 0
+    topic: meter.readings
+    description: Reactive energy QIV total
+  - obis: "1.0.9.8.0.255"
+    class_id: 3
+    field: apparent_energy_plus_total
+    unit: VAh
+    scaler: 0
+    topic: meter.readings
+    description: Apparent energy (+) total
+  - obis: "1.0.10.8.0.255"
+    class_id: 3
+    field: apparent_energy_minus_total
+    unit: VAh
+    scaler: 0
+    topic: meter.readings
+    description: Apparent energy (-) total
+  - obis: "1.0.15.8.0.255"
+    class_id: 3
+    field: active_energy_absolute_total
+    unit: Wh
+    scaler: 0
+    topic: meter.readings
+    description: Active energy absolute total
+
+  - obis: "1.0.21.8.0.255"
+    class_id: 3
+    field: l1_active_energy_plus_total
+    unit: Wh
+    scaler: 0
+    topic: meter.readings
+    description: L1 active energy (+) total
+  - obis: "1.0.22.8.0.255"
+    class_id: 3
+    field: l1_active_energy_minus_total
+    unit: Wh
+    scaler: 0
+    topic: meter.readings
+    description: L1 active energy (-) total
+  - obis: "1.0.41.8.0.255"
+    class_id: 3
+    field: l2_active_energy_plus_total
+    unit: Wh
+    scaler: 0
+    topic: meter.readings
+    description: L2 active energy (+) total
+  - obis: "1.0.42.8.0.255"
+    class_id: 3
+    field: l2_active_energy_minus_total
+    unit: Wh
+    scaler: 0
+    topic: meter.readings
+    description: L2 active energy (-) total
+  - obis: "1.0.61.8.0.255"
+    class_id: 3
+    field: l3_active_energy_plus_total
+    unit: Wh
+    scaler: 0
+    topic: meter.readings
+    description: L3 active energy (+) total
+  - obis: "1.0.62.8.0.255"
+    class_id: 3
+    field: l3_active_energy_minus_total
+    unit: Wh
+    scaler: 0
+    topic: meter.readings
+    description: L3 active energy (-) total
+
+  - obis: "1.0.1.29.0.255"
+    class_id: 3
+    field: active_energy_plus_total_u64
+    unit: Wh
+    scaler: 0
+    topic: meter.readings
+    description: Active energy (+A) total unsigned64
+  - obis: "1.0.2.29.0.255"
+    class_id: 3
+    field: active_energy_minus_total_u64
+    unit: Wh
+    scaler: 0
+    topic: meter.readings
+    description: Active energy (-A) total unsigned64
+  - obis: "1.0.3.29.0.255"
+    class_id: 3
+    field: reactive_energy_plus_total_u64
+    unit: varh
+    scaler: 0
+    topic: meter.readings
+    description: Reactive energy (+R) total unsigned64
+  - obis: "1.0.4.29.0.255"
+    class_id: 3
+    field: reactive_energy_minus_total_u64
+    unit: varh
+    scaler: 0
+    topic: meter.readings
+    description: Reactive energy (-R) total unsigned64
+
+  - obis: "1.0.1.7.0.255"
+    class_id: 3
+    field: instantaneous_active_power_plus
+    unit: W
+    scaler: 0
+    topic: meter.readings
+    description: Instantaneous active power (+A)
+  - obis: "1.0.2.7.0.255"
+    class_id: 3
+    field: instantaneous_active_power_minus
+    unit: W
+    scaler: 0
+    topic: meter.readings
+    description: Instantaneous active power (-A)
+  - obis: "1.0.3.7.0.255"
+    class_id: 3
+    field: instantaneous_reactive_power_plus
+    unit: var
+    scaler: 0
+    topic: meter.readings
+    description: Instantaneous reactive power (+R)
+  - obis: "1.0.4.7.0.255"
+    class_id: 3
+    field: instantaneous_reactive_power_minus
+    unit: var
+    scaler: 0
+    topic: meter.readings
+    description: Instantaneous reactive power (-R)
+  - obis: "1.0.9.7.0.255"
+    class_id: 3
+    field: instantaneous_apparent_power_plus
+    unit: VA
+    scaler: 0
+    topic: meter.readings
+    description: Instantaneous apparent power (+VA)
+  - obis: "1.0.10.7.0.255"
+    class_id: 3
+    field: instantaneous_apparent_power_minus
+    unit: VA
+    scaler: 0
+    topic: meter.readings
+    description: Instantaneous apparent power (-VA)
+  - obis: "1.0.13.7.0.255"
+    class_id: 3
+    field: instantaneous_power_factor_total
+    scaler: -3
+    topic: meter.readings
+    description: Instantaneous power factor total
+  - obis: "1.0.33.7.0.255"
+    class_id: 3
+    field: l1_power_factor
+    scaler: -3
+    topic: meter.readings
+    push: true
+    description: Instantaneous power factor L1
+  - obis: "1.0.53.7.0.255"
+    class_id: 3
+    field: l2_power_factor
+    scaler: -3
+    topic: meter.readings
+    push: true
+    description: Instantaneous power factor L2
+  - obis: "1.0.73.7.0.255"
+    class_id: 3
+    field: l3_power_factor
+    scaler: -3
+    topic: meter.readings
+    push: true
+    description: Instantaneous power factor L3
+  - obis: "1.0.14.7.0.255"
+    class_id: 3
+    field: supply_frequency
+    unit: Hz
+    scaler: -2
+    topic: meter.readings
+    push: true
+    description: Supply frequency
+
+  - obis: "1.0.31.7.0.255"
+    class_id: 3
+    field: l1_current
+    unit: A
+    scaler: -3
+    topic: meter.readings
+    push: true
+    description: Instantaneous current L1
+  - obis: "1.0.32.7.0.255"
+    class_id: 3
+    field: l1_voltage
+    unit: V
+    scaler: -2
+    topic: meter.readings
+    push: true
+    description: Instantaneous voltage L1
+  - obis: "1.0.51.7.0.255"
+    class_id: 3
+    field: l2_current
+    unit: A
+    scaler: -3
+    topic: meter.readings
+    push: true
+    description: Instantaneous current L2
+  - obis: "1.0.52.7.0.255"
+    class_id: 3
+    field: l2_voltage
+    unit: V
+    scaler: -2
+    topic: meter.readings
+    push: true
+    description: Instantaneous voltage L2
+  - obis: "1.0.71.7.0.255"
+    class_id: 3
+    field: l3_current
+    unit: A
+    scaler: -3
+    topic: meter.readings
+    push: true
+    description: Instantaneous current L3
+  - obis: "1.0.72.7.0.255"
+    class_id: 3
+    field: l3_voltage
+    unit: V
+    scaler: -2
+    topic: meter.readings
+    push: true
+    description: Instantaneous voltage L3
+
+  - obis: "1.0.21.7.0.255"
+    class_id: 3
+    field: l1_active_power_plus
+    unit: W
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: L1 active power (+)
+  - obis: "1.0.41.7.0.255"
+    class_id: 3
+    field: l2_active_power_plus
+    unit: W
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: L2 active power (+)
+  - obis: "1.0.61.7.0.255"
+    class_id: 3
+    field: l3_active_power_plus
+    unit: W
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: L3 active power (+)
+  - obis: "1.0.22.7.0.255"
+    class_id: 3
+    field: l1_active_power_minus
+    unit: W
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: L1 active power (-)
+  - obis: "1.0.42.7.0.255"
+    class_id: 3
+    field: l2_active_power_minus
+    unit: W
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: L2 active power (-)
+  - obis: "1.0.62.7.0.255"
+    class_id: 3
+    field: l3_active_power_minus
+    unit: W
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: L3 active power (-)
+
+  - obis: "1.0.23.7.0.255"
+    class_id: 3
+    field: l1_reactive_power_plus
+    unit: var
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: L1 reactive power (+)
+  - obis: "1.0.43.7.0.255"
+    class_id: 3
+    field: l2_reactive_power_plus
+    unit: var
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: L2 reactive power (+)
+  - obis: "1.0.63.7.0.255"
+    class_id: 3
+    field: l3_reactive_power_plus
+    unit: var
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: L3 reactive power (+)
+  - obis: "1.0.24.7.0.255"
+    class_id: 3
+    field: l1_reactive_power_minus
+    unit: var
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: L1 reactive power (-)
+  - obis: "1.0.44.7.0.255"
+    class_id: 3
+    field: l2_reactive_power_minus
+    unit: var
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: L2 reactive power (-)
+  - obis: "1.0.64.7.0.255"
+    class_id: 3
+    field: l3_reactive_power_minus
+    unit: var
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: L3 reactive power (-)
+
+  - obis: "1.0.29.7.0.255"
+    class_id: 3
+    field: l1_apparent_power_plus
+    unit: VA
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: L1 apparent power (+)
+  - obis: "1.0.49.7.0.255"
+    class_id: 3
+    field: l2_apparent_power_plus
+    unit: VA
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: L2 apparent power (+)
+  - obis: "1.0.69.7.0.255"
+    class_id: 3
+    field: l3_apparent_power_plus
+    unit: VA
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: L3 apparent power (+)
+  - obis: "1.0.30.7.0.255"
+    class_id: 3
+    field: l1_apparent_power_minus
+    unit: VA
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: L1 apparent power (-)
+  - obis: "1.0.50.7.0.255"
+    class_id: 3
+    field: l2_apparent_power_minus
+    unit: VA
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: L2 apparent power (-)
+  - obis: "1.0.70.7.0.255"
+    class_id: 3
+    field: l3_apparent_power_minus
+    unit: VA
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: L3 apparent power (-)
+
+  - obis: "1.0.91.7.132.255"
+    class_id: 3
+    field: current_difference_ln_percent
+    unit: "%"
+    scaler: -2
+    topic: meter.alarms
+    description: Current difference of L-N percentage
+  - obis: "1.0.131.7.0.255"
+    class_id: 3
+    field: reactive_power_factor
+    scaler: -3
+    topic: meter.readings
+    description: Reactive power factor
+  - obis: "0.0.96.8.0.255"
+    class_id: 3
+    field: meter_work_time
+    unit: s
+    scaler: 0
+    topic: meter.readings
+    push: true
+    description: Meter work time
+
+  - obis: "1.0.32.33.0.255"
+    class_id: 3
+    field: l1_sag_duration
+    unit: s
+    scaler: 0
+    topic: meter.alarms
+    description: Duration of L1 sag
+  - obis: "1.0.52.33.0.255"
+    class_id: 3
+    field: l2_sag_duration
+    unit: s
+    scaler: 0
+    topic: meter.alarms
+    description: Duration of L2 sag
+  - obis: "1.0.72.33.0.255"
+    class_id: 3
+    field: l3_sag_duration
+    unit: s
+    scaler: 0
+    topic: meter.alarms
+    description: Duration of L3 sag
+  - obis: "1.0.32.34.0.255"
+    class_id: 3
+    field: l1_sag_min_voltage
+    unit: V
+    scaler: -2
+    topic: meter.alarms
+    description: Minimum value of L1 sag
+  - obis: "1.0.52.34.0.255"
+    class_id: 3
+    field: l2_sag_min_voltage
+    unit: V
+    scaler: -2
+    topic: meter.alarms
+    description: Minimum value of L2 sag
+  - obis: "1.0.72.34.0.255"
+    class_id: 3
+    field: l3_sag_min_voltage
+    unit: V
+    scaler: -2
+    topic: meter.alarms
+    description: Minimum value of L3 sag
+  - obis: "1.0.32.37.0.255"
+    class_id: 3
+    field: l1_swell_duration
+    unit: s
+    scaler: 0
+    topic: meter.alarms
+    description: Duration of L1 swell
+  - obis: "1.0.52.37.0.255"
+    class_id: 3
+    field: l2_swell_duration
+    unit: s
+    scaler: 0
+    topic: meter.alarms
+    description: Duration of L2 swell
+  - obis: "1.0.72.37.0.255"
+    class_id: 3
+    field: l3_swell_duration
+    unit: s
+    scaler: 0
+    topic: meter.alarms
+    description: Duration of L3 swell
+  - obis: "1.0.32.38.0.255"
+    class_id: 3
+    field: l1_swell_max_voltage
+    unit: V
+    scaler: -2
+    topic: meter.alarms
+    description: Maximum value of L1 swell
+  - obis: "1.0.52.38.0.255"
+    class_id: 3
+    field: l2_swell_max_voltage
+    unit: V
+    scaler: -2
+    topic: meter.alarms
+    description: Maximum value of L2 swell
+  - obis: "1.0.72.38.0.255"
+    class_id: 3
+    field: l3_swell_max_voltage
+    unit: V
+    scaler: -2
+    topic: meter.alarms
+    description: Maximum value of L3 swell
+
+  - obis: "1.0.1.6.0.255"
+    class_id: 4
+    field: active_maximum_demand_plus
+    unit: W
+    scaler: -1
+    topic: meter.readings
+    description: Active maximum demand (+A)
+  - obis: "1.0.2.6.0.255"
+    class_id: 4
+    field: active_maximum_demand_minus
+    unit: W
+    scaler: -1
+    topic: meter.readings
+    description: Active maximum demand (-A)
+  - obis: "1.0.3.6.0.255"
+    class_id: 4
+    field: reactive_maximum_demand_plus
+    unit: var
+    scaler: -1
+    topic: meter.readings
+    description: Reactive maximum demand (+R)
+  - obis: "1.0.4.6.0.255"
+    class_id: 4
+    field: reactive_maximum_demand_minus
+    unit: var
+    scaler: -1
+    topic: meter.readings
+    description: Reactive maximum demand (-R)
+
+  - obis: "1.0.1.4.0.255"
+    class_id: 5
+    field: current_active_demand_plus
+    unit: W
+    scaler: -1
+    topic: meter.readings
+    description: Current active demand (+A)
+  - obis: "1.0.2.4.0.255"
+    class_id: 5
+    field: current_active_demand_minus
+    unit: W
+    scaler: -1
+    topic: meter.readings
+    description: Current active demand (-A)
+  - obis: "1.0.3.4.0.255"
+    class_id: 5
+    field: current_reactive_demand_plus
+    unit: var
+    scaler: -1
+    topic: meter.readings
+    description: Current reactive demand (+R)
+  - obis: "1.0.4.4.0.255"
+    class_id: 5
+    field: current_reactive_demand_minus
+    unit: var
+    scaler: -1
+    topic: meter.readings
+    description: Current reactive demand (-R)
+
+  - obis: "0.0.96.3.10.255"
+    class_id: 70
+    attribute: 3
+    field: disconnect_control_state
+    topic: meter.alarms
+    description: Disconnect control state
+  - obis: "0.1.96.3.10.255"
+    class_id: 70
+    attribute: 3
+    field: relay1_control_state
+    topic: meter.alarms
+    description: Relay1 control state

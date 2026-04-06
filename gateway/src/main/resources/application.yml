@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: cosem-gateway
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      acks: all
+      retries: 3
+      properties:
+        enable.idempotence: true
+        max.in.flight.requests.per.connection: 1
+
+cosem:
+  kafka:
+    topics:
+      readings: ${COSEM_KAFKA_TOPIC_READINGS:meter.readings}
+      events: ${COSEM_KAFKA_TOPIC_EVENTS:meter.events}
+      alarms: ${COSEM_KAFKA_TOPIC_ALARMS:meter.alarms}
+
+  tcp:
+    port: ${DLMS_TCP_PORT:4059}
+    idle-timeout-seconds: 120
+
+  # Device system title (hex) → profile id mapping.
+  # Add entries for each meter you deploy.
+  # Example: "534149000000001A": saiman_dala_3ph
+  devices: {}
+
+logging:
+  level:
+    io.cosemgateway: INFO
+    gurux: WARN
