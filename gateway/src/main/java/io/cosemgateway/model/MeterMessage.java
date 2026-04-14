@@ -53,7 +53,7 @@ public class MeterMessage {
     private String profile;
 
     /** Named readings: field name -> value+unit. */
-    private Map<String, MeterReading> readings = new LinkedHashMap<>();
+    private Map<String, Object> readings = new LinkedHashMap<>();
 
     /** Active alarms present in this push notification. */
     private List<String> alarms = new ArrayList<>();
