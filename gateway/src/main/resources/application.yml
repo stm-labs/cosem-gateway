@@ -31,5 +31,5 @@ cosem:
 
 logging:
   level:
-    io.cosemgateway: INFO
-    gurux: WARN
+    io.cosemgateway: ${LOGGING_LEVEL_IO_COSEMGATEWAY:INFO}
+    gurux: ${LOGGING_LEVEL_GURUX:WARN}

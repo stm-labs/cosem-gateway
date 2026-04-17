@@ -13,14 +13,16 @@ Multi-module Maven repository for a DLMS/COSEM TCP gateway and a live simulator.
 
 These environment variables are the runtime contract for the `gateway` container in production.
 
-| Variable                     | Required | Default          | Description                                                                                                    |
-|------------------------------|----------|------------------|----------------------------------------------------------------------------------------------------------------|
-| `KAFKA_BOOTSTRAP_SERVERS`    | Yes      | `localhost:9092` | Kafka bootstrap servers used by the gateway producer. In production this must point to the real Kafka cluster. |
-| `COSEM_KAFKA_TOPIC_READINGS` | No       | `meter.readings` | Topic for normalized meter readings.                                                                           |
-| `COSEM_KAFKA_TOPIC_EVENTS`   | No       | `meter.events`   | Reserved topic for event payloads.                                                                             |
-| `COSEM_KAFKA_TOPIC_ALARMS`   | No       | `meter.alarms`   | Topic for alarm-oriented normalized fields.                                                                    |
-| `COSEM_KAFKA_TOPIC_RAW`      | No       | `meter.raw`      | Topic for raw incoming TCP frames before DLMS decode.                                                          |
-| `DLMS_TCP_PORT`              | No       | `4059`           | TCP port exposed by the gateway for incoming meter push connections.                                           |
+| Variable                         | Required | Default            | Description                                                                                                    |
+|----------------------------------|----------|--------------------|----------------------------------------------------------------------------------------------------------------|
+| `KAFKA_BOOTSTRAP_SERVERS`        | Yes      | `localhost:9092`   | Kafka bootstrap servers used by the gateway producer. In production this must point to the real Kafka cluster. |
+| `COSEM_KAFKA_TOPIC_READINGS`     | No       | `meter.readings`   | Topic for normalized meter readings.                                                                           |
+| `COSEM_KAFKA_TOPIC_EVENTS`       | No       | `meter.events`     | Reserved topic for event payloads.                                                                             |
+| `COSEM_KAFKA_TOPIC_ALARMS`       | No       | `meter.alarms`     | Topic for alarm-oriented normalized fields.                                                                    |
+| `COSEM_KAFKA_TOPIC_RAW`          | No       | `meter.raw`        | Topic for raw incoming TCP frames before DLMS decode.                                                          |
+| `DLMS_TCP_PORT`                  | No       | `4059`             | TCP port exposed by the gateway for incoming meter push connections.                                           |
+| `LOGGING_LEVEL_IO_COSEMGATEWAY`  | No       | `INFO`             | Logging level for application.                                                                                 |
+| `LOGGING_LEVEL_GURUX`            | No       | `WARN`             | Logging level for Gurux library.                                                                               |
 
 Notes:
 
